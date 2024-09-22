@@ -1,0 +1,16 @@
+.projects-container {
+    padding: 60px 0;
+    background-color: #f9f9f9;
+  }
+  
+  .projects-title {
+    text-align: center;
+    margin-bottom: 40px;
+    font-size: 2.5rem;
+    color: #333;
+  }
+  
+  .project-card {
+    margin-bottom: 30px;
+  }
+  
