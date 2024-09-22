@@ -1,13 +1,14 @@
-import { ReportHandler } from 'web-vitals';
+import * as webVitals from 'web-vitals';
 
-const reportWebVitals = (onPerfEntry?: ReportHandler) => {
+const reportWebVitals = (onPerfEntry?: (metric: any) => void) => {
   if (onPerfEntry && onPerfEntry instanceof Function) {
-    import('web-vitals').then(({ getCLS, getFID, getFCP, getLCP, getTTFB }) => {
-      getCLS(onPerfEntry);
-      getFID(onPerfEntry);
-      getFCP(onPerfEntry);
-      getLCP(onPerfEntry);
-      getTTFB(onPerfEntry);
+    // List of expected web vitals functions
+    const vitalsFunctions = ['getCLS', 'getFID', 'getFCP', 'getLCP', 'getTTFB'];
+
+    vitalsFunctions.forEach((func) => {
+      if (typeof (webVitals as any)[func] === 'function') {
+        (webVitals as any)[func](onPerfEntry);
+      }
     });
   }
 };
